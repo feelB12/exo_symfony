@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -16,4 +17,12 @@ class ArticleController
         // je retourne  la reponse dans le HTTPFoundation
         return new Response( 'Articles' );
     }
+    /**
+     * @Route("/Articles/{id}", name="ArticlesShow")
+     */
+    public function ArticlesShow($id)
+    {
+                return new Response($id);
+    }
 }
+
