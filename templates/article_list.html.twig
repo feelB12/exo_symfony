@@ -1,0 +1,30 @@
+{% extends 'base.html.twig'%}
+
+{% block metaTitle %}Listes de mes articles
+{% endblock metaTitle%}
+{% block header %}
+            <h1>Bienvenue dans la liste des articles</h1>
+{% endblock header %}
+{% block main %}
+<h1>Il y a {{ articles | lenght }} article dans la base de données</h1>
+    <div class="articles-container">
+        {% for article in articles %}
+            {% if article.published %}
+                <article class="article>
+                {#
+                Je génère un lien vers la route articleShow.
+                Cette route demande une wildcard 'id', donc je la renseigne
+                avec l'id de l'article qui est actuellement en train d'être bouclé.
+                #}
+                <a href={{ path('articleShow', {'id': article.id}) }}>
+                    <h2>{{ article.title | upper }}</h2>
+                </a>
+                <p>{{ article.content }}</p>
+                </article>
+            {% endif %}
+        {% endfor %}
+        </div>
+{% endblock main %}
+{% block footer %}
+<h1>GoodBye Article List</h1>
+{% endblock footer %}
